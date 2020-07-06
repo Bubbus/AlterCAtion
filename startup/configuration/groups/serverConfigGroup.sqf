@@ -22,3 +22,6 @@
 // Squad markers
 #include "..\..\..\configuration\squadMarkers.hpp"
 #include "..\internals\squadMarkers.sqf"
+
+// AlterCAtion: objectives
+#include "..\..\..\configuration\objectives.sqf"

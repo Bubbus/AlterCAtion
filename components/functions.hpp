@@ -23,5 +23,7 @@ class F
 #include "squadMarkers\functions.hpp"
 #include "endings\functions.hpp"
 #include "lootBox\functions.hpp"
+#include "objectives\functions.hpp"
+#include "database\functions.hpp"
 
 }

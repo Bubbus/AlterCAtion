@@ -52,12 +52,14 @@
 
 #define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
 #define DICT_CREATE_VALS(NAME,VALUES) DICT_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
+#define DICT_FROM_ARRAY(NAME,ARR) DICT_CREATE(NAME); {NAME setVariable [_x, true]} foreach ARR
+#define DICT_FROM_ARRAY_KEYED(NAME,ARR,KEYIDX) DICT_CREATE(NAME); {NAME setVariable [_x select KEYIDX, _x]} foreach ARR
 #define DICT_GET(NAME,KEY) NAME getVariable [KEY, []]
 #define DICT_CONTAINS(NAME,KEY) !((NAME getVariable [KEY, "q£fsDSd4&&<"]) isEqualTo "q£fsDSd4&&<")
 #define DICT_SET(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE]
 #define DICT_SET_GLOBAL(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE, true]
-#define DICT_DELETE(NAME,KEY) NAME setVariable [KEY, nil]
-#define DICT_REMOVE(NAME,KEY) DICT_DELETE(NAME,KEY)
+#define DICT_REMOVE(NAME,KEY) NAME setVariable [KEY, nil]
+#define DICT_DELETE(NAME) deleteLocation NAME
 #define DICT_FOREACH(NAME,FUNC) {private _key = _x; private _value = DICT_GET(NAME,_x); call _code;} forEach (allVariables NAME)
 
 // CBA hash convenience macros
@@ -71,6 +73,7 @@
 #define HASH_FOREACH(NAME,FUNC) [NAME, FUNC] call CBA_fnc_hashEachPair
 
 #define IS_TRUE(VAR) ((!isNil #VAR) and {VAR})
+#define EXISTS(VAR) (!isNil STRING(VAR))
 
 #define SERVER_ONLY if (!isServer) exitWith {}
 #define CLIENT_ONLY if (!hasInterface) exitWith {}
@@ -117,3 +120,6 @@ if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
 
 #define FULL_KILL_LOG_KEY_SERVER 'f_var_killTracking_##KILL_LOG_NAME##'
 #define FULL_KILL_LOG_KEY_CLIENT 'f_var_killTracking_##KILL_LOG_NAME##_received'
+
+
+#include "altercation_macros.hpp"

@@ -30,3 +30,6 @@
 
 // Ending music settings
 #include "..\..\..\configuration\endingMusic.sqf"
+
+// AlterCAtion: objectives
+#include "..\..\..\configuration\objectives.sqf"
