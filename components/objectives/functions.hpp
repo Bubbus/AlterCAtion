@@ -7,4 +7,7 @@ class objectives
     class getAddedLocations{};
     class getEditedLocations{};
     class getAllObjectives{};
+    class buildFreshObjectiveStates{};
+    class getEditedObjectiveStates{};
+    class applyObjectiveStateEdits{};
 };

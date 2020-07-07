@@ -1,5 +1,5 @@
 // Get all locations on the map, based upon the approach in HaM.
-// Outputs in format [[name, type, center location, [dimensions]], ...]
+// Outputs in format [[name, type, display name, center location, [dimensions]], ...]
 
 #include "macros.hpp"
 
@@ -29,10 +29,11 @@ _objectives = [];
 
 	_dims = [_radiusX, _radiusY];
 	_pos = getArray (_x >> "position");
-	_name = getText (_x >> "name");
+	_displayName = getText (_x >> "name");
 	_type = getText (_x >> "type");
+	_name = configName _x;
 
-	_objectives pushBack [_name, _type, _pos, _dims];
+	_objectives pushBack [_name, _type, _displayName, _pos, _dims];
 
 } forEach _objLocations;
 

@@ -122,4 +122,4 @@ if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
 #define FULL_KILL_LOG_KEY_CLIENT 'f_var_killTracking_##KILL_LOG_NAME##_received'
 
 
-#include "altercation_macros.hpp"
+#include "altercationMacros\altercation_macros.hpp"

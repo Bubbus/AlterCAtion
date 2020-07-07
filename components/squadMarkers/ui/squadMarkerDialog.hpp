@@ -1,4 +1,4 @@
-#include "../ui_macros.hpp"
+#include "..\ui_macros.hpp"
 
 class CA2_SquadMarker_Dialog
 {

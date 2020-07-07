@@ -1,2 +1,2 @@
-#include "../../macros.hpp"
-#include "../../gearscript_macros.hpp"
+#include "..\..\macros.hpp"
+#include "..\..\gearscript_macros.hpp"

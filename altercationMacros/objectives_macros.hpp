@@ -1,0 +1,60 @@
+
+#define OBJECTIVES_CACHE G_ARR(objectives)
+
+#define OBJ_EXCLUDES    G_ARR(objectives_excludes)
+#define OBJ_ADDITIONS   G_ARR(objectives_additions)
+#define OBJ_EDITS       G_ARR(objectives_edits)
+#define OBJ_STATE_EDITS G_ARR(objectives_state_edits)
+
+#define BEGIN_OBJECTIVES\
+    OBJ_EXCLUDES = [];\
+    OBJ_ADDITIONS = [];\
+    OBJ_EDITS = [];\
+    OBJ_STATE_EDITS = []
+
+#define OBJ_CONFIG_DONE G_VAR(objectives_config_done)
+#define FINALIZE_OBJECTIVES OBJ_CONFIG_DONE = true
+
+#define NEW_LOCATION() ["","","",[],[]]
+#define NEW_LOCATION_ENTRY(NAME) [NAME,"","",[],[]]
+
+#define OBJ_IDX_NAME 0
+#define OBJ_IDX_TYPE 1
+#define OBJ_IDX_DISPLAYNAME 2
+#define OBJ_IDX_POSITION 3
+#define OBJ_IDX_DIMENSIONS 4
+
+#define SET_LOCATION_NAME(ENTRY,NAME)            ENTRY set [OBJ_IDX_NAME, NAME]
+#define SET_LOCATION_TYPE(ENTRY,TYPE)            ENTRY set [OBJ_IDX_TYPE, TYPE]
+#define SET_LOCATION_DISPLAY_NAME(ENTRY,NAME)    ENTRY set [OBJ_IDX_DISPLAYNAME, NAME]
+#define SET_LOCATION_POSITION(ENTRY,POS_X,POS_Y) ENTRY set [OBJ_IDX_POSITION, [POS_X, POS_Y]]
+#define SET_LOCATION_RADIUS(ENTRY,RADIUS)        ENTRY set [OBJ_IDX_DIMENSIONS, [RADIUS, RADIUS]]
+
+#define EXCLUDE_LOCATION(NAME)  OBJ_EXCLUDES pushBack NAME
+#define ADD_LOCATION(ENTRY)     OBJ_ADDITIONS pushBack ENTRY
+#define EDIT_LOCATION(ENTRY)    OBJ_EDITS pushBack ENTRY
+
+
+
+#define OBJSTATE_IDX_OBJNAME 0
+#define OBJSTATE_IDX_STATUS 1
+#define OBJSTATE_IDX_OWNER 2
+
+#define STATUS_UNDEFINED "undefined"
+#define STATUS_NORMAL "Normal"
+#define STATUS_DAMAGED "Damaged"
+#define STATUS_ABANDONED "Abandoned"
+#define STATUS_RAZED "Razed"
+
+#define OWNER_UNDEFINED "undefined"
+#define OWNER_BLUFOR "west"
+#define OWNER_OPFOR "east"
+#define OWNER_CIVILIAN "civilian"
+#define OWNER_NONE "none"
+
+#define NEW_OBJECTIVE_STATE(NAME) [NAME,STATUS_UNDEFINED,OWNER_UNDEFINED]
+
+#define SET_OBJECTIVE_STATUS(STATE,STATUS) STATE set [OBJSTATE_IDX_STATUS, STATUS]
+#define SET_OBJECTIVE_OWNER(STATE,OWNER) STATE set [OBJSTATE_IDX_OWNER, OWNER]
+
+#define EDIT_OBJECTIVE_STATE(ENTRY) OBJ_STATE_EDITS pushBack ENTRY
