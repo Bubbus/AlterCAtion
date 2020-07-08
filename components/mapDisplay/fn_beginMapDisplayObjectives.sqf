@@ -3,11 +3,13 @@
 
 WAIT_UNTIL_MISSION_STARTED();
 waitUntil { IS_TRUE(OBJ_CONFIG_DONE) };
+waitUntil { IS_TRUE(LIVE_SETS_READY) };
 
-// 2020-07-08 TODO :: Retrieve objectives from active data store.
-_allObjectives = [] call f_fnc_getAllObjectives;
-
+_drawObjective =
 {
-    [_x] call f_fnc_drawObjectiveOnMap;
+    params ["_name", "_obj"];
+    [_obj] call f_fnc_drawObjectiveOnMap;
+};
 
-} forEach _allObjectives;
+_objLookup = GET_LOOKUP_OBJECTIVES();
+DICT_FOREACH(_objLookup,_drawObjective);

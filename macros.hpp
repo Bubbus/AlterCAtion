@@ -46,10 +46,6 @@
 #define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = [] spawn FUNC; };
 
 // String-keyed dictionary convenience macros
-#define DICT_CREATE_GLOBAL(NAME) \
-    _tempDict = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0] \
-    missionNamespace setVariable [#NAME, _tempDict, true];
-
 #define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
 #define DICT_CREATE_VALS(NAME,VALUES) DICT_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
 #define DICT_FROM_ARRAY(NAME,ARR) DICT_CREATE(NAME); {NAME setVariable [_x, true]} foreach ARR
@@ -60,7 +56,7 @@
 #define DICT_SET_GLOBAL(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE, true]
 #define DICT_REMOVE(NAME,KEY) NAME setVariable [KEY, nil]
 #define DICT_DELETE(NAME) deleteLocation NAME
-#define DICT_FOREACH(NAME,FUNC) {private _key = _x; private _value = DICT_GET(NAME,_x); call _code;} forEach (allVariables NAME)
+#define DICT_FOREACH(NAME,FUNC) {_dictForeachKey = _x; private _dictForeachValue = DICT_GET(NAME,_x); [_dictForeachKey, _dictForeachValue] call FUNC;} forEach (allVariables NAME)
 
 // CBA hash convenience macros
 #define HASH_CREATE(NAME) NAME = [] call CBA_fnc_hashCreate

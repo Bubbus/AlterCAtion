@@ -37,3 +37,5 @@ INIT_COMPONENT(gravestones)
 
 
 INIT_COMPONENT(mapDisplay)
+
+INIT_COMPONENT(database)
