@@ -36,3 +36,6 @@ INIT_COMPONENT(zeus_ui)
 INIT_COMPONENT(gravestones)
 
 #endif
+
+
+INIT_COMPONENT(mapDisplay)

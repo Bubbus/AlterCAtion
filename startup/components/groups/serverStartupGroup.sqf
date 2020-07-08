@@ -34,3 +34,6 @@ INIT_COMPONENT(killTracker)
 INIT_COMPONENT(gravestones)
 
 #endif
+
+
+INIT_COMPONENT(mapDisplay)

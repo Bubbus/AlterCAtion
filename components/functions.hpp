@@ -25,5 +25,6 @@ class F
 #include "lootBox\functions.hpp"
 #include "objectives\functions.hpp"
 #include "database\functions.hpp"
+#include "mapDisplay\functions.hpp"
 
 }
